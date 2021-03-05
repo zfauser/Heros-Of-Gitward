@@ -2,6 +2,7 @@
 import time
 #import title
 #getch from: https://stackoverflow.com/questions/27750536/python-input-single-character-without-enter
+import sys
 import random
 def getch():
     import termios
@@ -16,6 +17,13 @@ def getch():
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
     return _getch()
+
+def beep(interval = 0.1, frequency = 10):
+    for i in range(frequency):
+        print("\a",end="\r")
+        time.sleep(interval)
+
+
 paths = "N(chestroom),E(weapons room),S(hallway),W(hospital)"
 pathways = 4
 controls= ("Controls: \nTo move forward use: f \nTo move backwards use: b \nTo move left use: l \nTo move right use: r \nTo climb up use: C \nTo climb down use: d \nTo attack use: a \nTo open something use: o \nTo see this menu again use: ? \n")
@@ -97,6 +105,7 @@ while True:
                 roomname = "Secret"
                 if foundsecret == 0:
                     print("You have found the secret room! +10 Gold")
+                    sys.stdout.write('\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a')
                     foundsecret = 1
                     gold = gold+10
                 paths = "N"
@@ -104,6 +113,7 @@ while True:
             else:
                 roomname = "Not Allowed"
                 room = oldroom
+            beep()
             print("You're now in the",roomname,(","),name)
             print("Gold:",gold,"Health:",health)
             if health==0:

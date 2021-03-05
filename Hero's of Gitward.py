@@ -15,10 +15,12 @@ def getch():
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
     return _getch()
+paths = "N,E,S,W"
+pathways = 4
 controls= ("Controls: \nTo move forward use: f \nTo move backwards use: b \nTo move left use: l \nTo move right use: r \nTo climb up use: C \nTo climb down use: d \nTo attack use: a \nTo open something use: o \nTo see this menu again use: ? \n")
 gold = 0
-points = 0
 room = 10
+foundsecret = 0
 roomname = "start"
 while True:
     #print("Hello & welcome to the world of Gitward! \nWould you to (1) play or (2) see the controls? \nPlease enter 1 or 2 below \n")
@@ -34,9 +36,8 @@ while True:
         #time.sleep(1)
         while room != 4:
             oldroom = room
-            print("You see 4 pathways. \nWhat direction would you like to proceed in? \n")
+            print("You see", pathways, "pathways", paths, " \nWhat direction would you like to proceed in? \n")
             firstinput = getch()
-            print(firstinput.upper())
             if firstinput == "?":
                 print(controls)
             elif firstinput.upper() == "N":
@@ -52,28 +53,53 @@ while True:
                 room = room /2
             if room == 1:
                 roomname = "Mountain"
+                paths = "N,E"
+                pathways = 2
             elif room == 2:
                 roomname = "Hallway"
+                paths = "N,E"
+                pathways = 2
             elif room == 4:
                 roomname = "Bossroom"
+                paths = "N,E"
+                pathways = 2
             elif room == 5:
                 roomname = "Hospital"
+                paths = "N,E"
+                pathways = 2
             elif room == 10:
                 roomname = "Start"
+                paths = "N,E"
+                pathways = 2
             elif room == 20:
                 roomname = "Weapons Room"
+                paths = "N,E"
+                pathways = 2
             elif room == 25:
                 roomname = "Monster Room"
+                paths = "N,E"
+                pathways = 2
             elif room == 50:
                 roomname = "Chest Room"
+                paths = "N,E"
+                pathways = 2
             elif room == 100:
                 roomname = "Guessing Game"
+                paths = "N,E"
+                pathways = 2
             elif room == 0.4:
                 roomname = "Secret"
+                if foundsecret == 0:
+                    print("You have found the secret room! +10 Gold")
+                    foundsecret = 1
+                    gold = gold+10
+                paths = "N"
+                pathways = 1
             else:
                 roomname = "Not Allowed"
                 room = oldroom
-            print("You're now in the", roomname,(","),name)
+            print("You're now in the",roomname,(","),name)
+            print("Gold:",gold)
         print("You win")
         break
     

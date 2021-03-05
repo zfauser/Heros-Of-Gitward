@@ -2,6 +2,7 @@
 import time
 #import title
 #getch from: https://stackoverflow.com/questions/27750536/python-input-single-character-without-enter
+import random
 def getch():
     import termios
     import sys, tty
@@ -83,7 +84,7 @@ while True:
                 roomname = "Monster Room"
                 paths = "N,E"
                 pathways = 2
-                health=health-50
+                health=health-random.randint(25,50)
             elif room == 50:
                 roomname = "Chest Room"
                 paths = "N(monster room),E(guessing game),S(Start)"

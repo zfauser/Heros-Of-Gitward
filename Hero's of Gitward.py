@@ -19,29 +19,63 @@ controls= ("Controls: \nTo move forward use: f \nTo move backwards use: b \nTo m
 gold = 0
 points = 0
 room = 10
+roomname = "start"
 while True:
-    print("Hello & welcome to the world of Gitward! \nWould you to (1) play or (2) see the controls? \nPlease enter 1 or 2 below \n")
-    SelectScreen = getch() 
+    #print("Hello & welcome to the world of Gitward! \nWould you to (1) play or (2) see the controls? \nPlease enter 1 or 2 below \n")
+    #SelectScreen = getch() 
+    SelectScreen = "1"
     if SelectScreen == "1":
-        name= input("What is your name adventurer? \n")
-        print("Hello,", name)
-        print("Lets get started", name)
-        time.sleep(2)
-        print("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-        time.sleep(1)
-        while room==10:
-            firstinput = input("You see 4 pathways. \nWhat direction would you like to proceed in? \n")
+        #name= input("What is your name adventurer? \n")
+        name = "Zach"
+        #print("Hello,", name)
+        #print("Lets get started", name)
+        #time.sleep(2)
+        #print("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+        #time.sleep(1)
+        while room != 4:
+            oldroom = room
+            print("You see 4 pathways. \nWhat direction would you like to proceed in? \n")
+            firstinput = getch()
+            print(firstinput.upper())
             if firstinput == "?":
                 print(controls)
-            elif firstinput.upper == "N":
-                room+3
-                print("You're now in room", 8,(","), name)
-            elif firstinput.upper == "E":
-                room+1
-                print("You're now in room", room,(","), name)
-            elif firstinput.upper == "S":
-                room-3
-                print("You're now in room", room,(","), name)
-                break
-    if SelectScreen == 2:
+            elif firstinput.upper() == "N":
+                room = room*5
+                
+            elif firstinput.upper() == "E":
+                room = room*2
+               
+            elif firstinput.upper() == "S":
+                room = room /5
+            
+            elif firstinput.upper() == "W":
+                room = room /2
+            if room == 1:
+                roomname = "Mountain"
+            elif room == 2:
+                roomname = "Hallway"
+            elif room == 4:
+                roomname = "Bossroom"
+            elif room == 5:
+                roomname = "Hospital"
+            elif room == 10:
+                roomname = "Start"
+            elif room == 20:
+                roomname = "Weapons Room"
+            elif room == 25:
+                roomname = "Monster Room"
+            elif room == 50:
+                roomname = "Chest Room"
+            elif room == 100:
+                roomname = "Guessing Game"
+            elif room == 0.4:
+                roomname = "Secret"
+            else:
+                roomname = "Not Allowed"
+                room = oldroom
+            print("You're now in the", roomname,(","),name)
+        print("You win")
+        break
+    
+    if SelectScreen == "2":
         print(controls)

@@ -1,6 +1,7 @@
 # https://github.com/Zfauser/Python-Game-Gr-9
 import time
 #import title
+#getch from: https://stackoverflow.com/questions/27750536/python-input-single-character-without-enter
 def getch():
     import termios
     import sys, tty

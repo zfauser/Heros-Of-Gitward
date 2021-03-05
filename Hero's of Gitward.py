@@ -15,13 +15,14 @@ def getch():
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
     return _getch()
-paths = "N,E,S,W"
+paths = "N(chestroom),E(weapons room),S(hallway),W(hospital)"
 pathways = 4
 controls= ("Controls: \nTo move forward use: f \nTo move backwards use: b \nTo move left use: l \nTo move right use: r \nTo climb up use: C \nTo climb down use: d \nTo attack use: a \nTo open something use: o \nTo see this menu again use: ? \n")
 gold = 0
 room = 10
 foundsecret = 0
 roomname = "start"
+health = 100
 while True:
     #print("Hello & welcome to the world of Gitward! \nWould you to (1) play or (2) see the controls? \nPlease enter 1 or 2 below \n")
     #SelectScreen = getch() 
@@ -63,10 +64,13 @@ while True:
                 roomname = "Bossroom"
                 paths = "N,E"
                 pathways = 2
+                print("You win")
+                break
             elif room == 5:
                 roomname = "Hospital"
                 paths = "N,E"
                 pathways = 2
+                health = 100
             elif room == 10:
                 roomname = "Start"
                 paths = "N,E"
@@ -79,10 +83,11 @@ while True:
                 roomname = "Monster Room"
                 paths = "N,E"
                 pathways = 2
+                health=health-50
             elif room == 50:
                 roomname = "Chest Room"
-                paths = "N,E"
-                pathways = 2
+                paths = "N(monster room),E(guessing game),S(Start)"
+                pathways = 3
             elif room == 100:
                 roomname = "Guessing Game"
                 paths = "N,E"
@@ -99,9 +104,11 @@ while True:
                 roomname = "Not Allowed"
                 room = oldroom
             print("You're now in the",roomname,(","),name)
-            print("Gold:",gold)
-        print("You win")
-        break
+            print("Gold:",gold,"Health:",health)
+            if health==0:
+                print("Dead")
+                break
+        
     
     if SelectScreen == "2":
         print(controls)

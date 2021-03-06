@@ -32,6 +32,8 @@ triviagames = 0
 gold = 0
 room = 10
 foundsecret = 0
+keys = 0
+climb = 0
 roomname = "start"
 health = 100
 weapons = ["Iron Sword","Battle Axe","Fire Rod","Crossbow"]
@@ -70,6 +72,23 @@ while True:
                 roomname = "Mountain"
                 paths = "N(Hospital),E(Hallway)"
                 pathways = 2
+                cls()
+                if keys == 0:
+                    while climb != "1" and climb != "2":
+                        try:
+                            print("Would you like to climb the mountain? \n [1] Yes [2] No")
+                            climb = getch()
+                            if climb == "1":
+                                print("You found a key!! but... you lost 25 Health while doing so")
+                                keys = 1
+                                health = health - 25
+                            elif climb == "2":
+                                print("Goodbye")
+
+                        except:
+                            print("Invalid character")
+                else:
+                    print("You have alerady climbed the mountain")
             elif room == 2:
                 roomname = "Hallway"
                 paths = "N(Start),E(Boss Room),W(Mountain)"

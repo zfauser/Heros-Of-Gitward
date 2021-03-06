@@ -1,2 +1,3 @@
-# Python-Game-Gr-9
-A text based python game
+# Gitward
+-
+Gitward is a text based python game.

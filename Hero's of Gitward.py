@@ -39,7 +39,7 @@ health = 100
 weapons = ["Iron Sword","Battle Axe","Fire Rod","Crossbow"]
 cost = [10,15,20,25]
 damage = [10,15,20,25]
-inventory = [1,3]
+inventory = []
 option = 0
 while True:
     #print("Hello & welcome to the world of Gitward! \nWould you to play? \nPlease enter 1 \n")
@@ -159,6 +159,7 @@ while True:
                                 print("Invalid option")
                     if option == 3:
                         print("Bye",name,)
+                option =0
             elif room == 25:
                 roomname = "Monster Room"
                 paths = "E(Chest Room),S(Hospital)"
@@ -168,6 +169,17 @@ while True:
                 roomname = "Chest Room"
                 paths = "W(Monster room),E(Guessing game),S(Start)"
                 pathways = 3
+                cls()
+                if keys == 1:
+                    print("You have the Key! Would you like to open the chest? \n Press [1] To open or press [2] to not")
+                    open = int(getch())
+                    if open == 1:
+                        amountofgold = random.randint(10,20)
+                        gold = gold + amountofgold
+                        print("You got",amountofgold,"gold")
+                else:
+                    print("The chest is locked")
+
             elif room == 100:
                 roomname = "Guessing Game"
                 paths = "W(Chest Room),S(Weapons Room)"

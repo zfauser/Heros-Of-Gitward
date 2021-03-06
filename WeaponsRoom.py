@@ -16,7 +16,7 @@ def getch():
     return _getch()
 
 def beep(interval = 0.1, frequency = 10):
-    for i in range(frequency):
+    for x in range(frequency):
         print("\a",end="\r")
         time.sleep(interval)
 import os
@@ -73,4 +73,5 @@ while option != 3:
                 print("Invalid option")
     if option == 3:
         print("Bye",name,)
+        #test
         

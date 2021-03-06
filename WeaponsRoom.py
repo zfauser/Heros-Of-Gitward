@@ -42,15 +42,16 @@ while option != 3:
             while i < len(weapons):
                 print("[",i,"]",weapons[i],"Cost:",cost[i],"Damage:",damage[i])
                 i = i + 1
-            print("[",i,"] Nothing")
-                
+            print("[",i,"] Nothing")        
             buy = int(getch())
-            if gold - cost[buy] < 0:
-                print("You don't have enough gold for that weapon")
-            else:
-                gold = gold - cost[buy]
-                inventory.append(buy)
-                print("You bought",weapons[buy])
+            if buy != i:
+                if gold - cost[buy] < 0:
+                    print("You don't have enough gold for that weapon")
+                else:
+                    gold = gold - cost[buy]
+                    inventory.append(buy)
+                    print("You bought",weapons[buy])
+
         except:
              print("Invalid option")
     if option == 2:

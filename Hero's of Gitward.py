@@ -41,18 +41,20 @@ cost = [10,15,20,25]
 damage = [10,15,20,25]
 inventory = []
 option = 0
-while True:
-    #print("Hello & welcome to the world of Gitward! \nWould you to play? \nPlease enter 1 \n")
+octocathealth = 100
+SelectScreen = "1"
+while SelectScreen == "1":
+    print("Hello & welcome to the world of Gitward!")
     #SelectScreen = getch() 
-    SelectScreen = "1"
+    
     if SelectScreen == "1":
-        #name= input("What is your name adventurer? \n")
-        name = "Zach"
-        #print("Hello,", name)
-        #print("Lets get started", name)
-        #time.sleep(2)
-        #print("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-        #time.sleep(1)
+        name= input("What is your name adventurer? \n")
+        #name = "Zach"
+        print("Hello,", name)
+        print("Lets get started", name)
+        time.sleep(2)
+        cls()
+        time.sleep(.5)
         while room != 4:
             oldroom = room
             print("You see", pathways, "pathways", paths, " \nWhat direction would you like to proceed in? \n")
@@ -97,8 +99,45 @@ while True:
                 roomname = "Bossroom"
                 paths = "N(Weapons Room),W(Hallway)"
                 pathways = 2
-                print("You win")
-                break
+                cls()
+                if len(inventory) != 0:
+                    print("Would you like to fight Octocat? \n [1] Yes [2] No")
+                    bossfight = getch()
+                    if bossfight == "1":
+                        print("Okay then...")
+                        print("What weapon would you like to use?")
+                        i = 0
+                        while i < len(inventory):
+                            print("[",i,"]",weapons[inventory[i]],"| Damage:",damage[inventory[i]])
+                            i = i + 1
+                        try:
+                            choosenweapon = int(getch())
+                            print("You picked",weapons[inventory[choosenweapon]])
+                        except:
+                            print("Invalid option")
+                        print("Starting fight...")
+                        time.sleep(2)
+                        while health > 0 and octocathealth > 0:
+                            cls()
+                            print(name,"'s Health:",health,"Octocat's Health:",octocathealth)
+                            time.sleep(2)
+                            playerdamage = random.randint(damage[inventory[choosenweapon]]-5,damage[inventory[choosenweapon]]+2)
+                            print(name,"hits octocat with",weapons[inventory[choosenweapon]],"and did",playerdamage,"damage!")
+                            time.sleep(2)
+                            octocathealth = octocathealth - damage[inventory[choosenweapon]]
+                            octocatdamage = random.randint(1,30)
+                            print("Octocat hits",name,"with his octopus like arms and did",octocatdamage,"damage!")
+                            health = health - octocatdamage            
+                            time.sleep(2)
+                            
+                        if octocathealth >health:
+                            print("Octocat won...")
+                            print("You Lose :(")
+                        else:
+                            print(name,"won!!! Congratulations!")
+                        SelectScreen = "0"
+                else:
+                    print("You must have a weapon to fight Octocat!")
             elif room == 5:
                 roomname = "Hospital"
                 paths = "N(Monster Room),E(Start),S(Mountain)"

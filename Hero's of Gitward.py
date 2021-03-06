@@ -38,7 +38,7 @@ health = 100
 weapons = ["Iron Sword","Battle Axe","Fire Rod","Crossbow"]
 cost = [10,15,20,25]
 damage = [10,15,20,25]
-inventory = []
+inventory = [1,3]
 option = 0
 while True:
     #print("Hello & welcome to the world of Gitward! \nWould you to (1) play or (2) see the controls? \nPlease enter 1 or 2 below \n")

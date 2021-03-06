@@ -28,7 +28,6 @@ def cls():
 cls()
 paths = "N(chestroom),E(weapons room),S(hallway),W(hospital)"
 pathways = 4
-controls= ("Controls: \nTo move forward use: f \nTo move backwards use: b \nTo move left use: l \nTo move right use: r \nTo climb up use: C \nTo climb down use: d \nTo attack use: a \nTo open something use: o \nTo see this menu again use: ? \n")
 triviagames = 0
 gold = 0
 room = 10
@@ -41,7 +40,7 @@ damage = [10,15,20,25]
 inventory = [1,3]
 option = 0
 while True:
-    #print("Hello & welcome to the world of Gitward! \nWould you to (1) play or (2) see the controls? \nPlease enter 1 or 2 below \n")
+    #print("Hello & welcome to the world of Gitward! \nWould you to play? \nPlease enter 1 \n")
     #SelectScreen = getch() 
     SelectScreen = "1"
     if SelectScreen == "1":
@@ -56,9 +55,7 @@ while True:
             oldroom = room
             print("You see", pathways, "pathways", paths, " \nWhat direction would you like to proceed in? \n")
             firstinput = getch()
-            if firstinput == "?":
-                print(controls)
-            elif firstinput.upper() == "N":
+            if firstinput.upper() == "N":
                 room = room*5
                 
             elif firstinput.upper() == "E":
@@ -71,32 +68,32 @@ while True:
                 room = room /2
             if room == 1:
                 roomname = "Mountain"
-                paths = "N,E"
+                paths = "N(Hospital),E(Hallway)"
                 pathways = 2
             elif room == 2:
                 roomname = "Hallway"
-                paths = "N,E"
+                paths = "N(Start),E(Boss Room),W(Mountain)"
                 pathways = 2
             elif room == 4:
                 roomname = "Bossroom"
-                paths = "N,E"
+                paths = "N(Weapons Room),W(Hallway)"
                 pathways = 2
                 print("You win")
                 break
             elif room == 5:
                 roomname = "Hospital"
-                paths = "N,E"
+                paths = "N(Monster Room),E(Start),S(Mountain)"
                 pathways = 2
                 health = 100
                 print("Welcome To The Hosptal", name)
                 print("You're now at 100 health again!")
             elif room == 10:
                 roomname = "Start"
-                paths = "N,E"
+                paths = "N(Chest Room),E(Weapons Room),S(Hallway),W(Hospital)"
                 pathways = 2
             elif room == 20:
                 roomname = "Weapons Room"
-                paths = "N,E"
+                paths = "N(Guessing Game),S(Bossroom),W(Start)"
                 pathways = 2
                 cls()
                 print("Welcome",name,"to the weapon's room!!")
@@ -145,16 +142,16 @@ while True:
                         print("Bye",name,)
             elif room == 25:
                 roomname = "Monster Room"
-                paths = "N,E"
+                paths = "E(Chest Room),S(Hospital)"
                 pathways = 2
                 health=health-random.randint(25,50)
             elif room == 50:
                 roomname = "Chest Room"
-                paths = "N(monster room),E(guessing game),S(Start)"
+                paths = "W(Monster room),E(Guessing game),S(Start)"
                 pathways = 3
             elif room == 100:
                 roomname = "Guessing Game"
-                paths = "N,E"
+                paths = "W(Chest Room),S(Weapons Room)"
                 pathways = 2
                 cls()
                 if triviagames == 0:
@@ -217,7 +214,7 @@ while True:
                     #sys.stdout.write('\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a')
                     foundsecret = 1
                     gold = gold+10
-                paths = "N"
+                paths = "N(Hallway)"
                 pathways = 1
             else:
                 roomname = "Not Allowed"
@@ -228,7 +225,3 @@ while True:
             if health==0:
                 print("Dead")
                 break
-        
-    
-    if SelectScreen == "2":
-        print(controls)

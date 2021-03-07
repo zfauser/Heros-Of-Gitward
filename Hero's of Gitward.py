@@ -314,7 +314,9 @@ while SelectScreen == "1":
                 roomname = "Monster Room"
                 paths = "E(Chest Room),S(Hospital)"
                 pathways = 2
-                health=health-random.randint(25,50)
+                monsterdamage = random.randint(25,50)
+                health=health-monsterdamage
+                print("The monster attacked you! You lost",monsterdamage,"health")
             elif room == 50:
                 roomname = "Chest Room"
                 paths = "W(Monster room),E(Guessing game),S(Start)"

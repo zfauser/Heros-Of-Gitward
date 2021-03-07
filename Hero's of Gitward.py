@@ -233,7 +233,7 @@ while SelectScreen == "1":
                             time.sleep(.1)
                             print("      8 8888       8 8888        8 8 888888888888    8 888888888888 8            `Yo 8 888888888P'      ")
                             time.sleep(3)
-                            print("All programming done by: Zach Fauser")
+                            print("\nAll programming done by: Zach Fauser")
                             time.sleep(2)
                             print("Special thanks to:")
                             time.sleep(2)

@@ -254,7 +254,7 @@ while SelectScreen == "1":
                 paths = "N(Monster Room),E(Start),S(Mountain)"
                 pathways = 2
                 health = 100
-                print("Welcome To The Hosptal", name)
+                print("Welcome To The Hospital", name)
                 print("You're now at 100 health again!")
             elif room == 10:
                 roomname = "Start"

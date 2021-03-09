@@ -406,5 +406,5 @@ while SelectScreen == "1":
             print("You're now in the",roomname,(","),name)
             print("Gold:",gold,"Health:",health)
             if health <= 0:
-                print("Dead")
+                print("You died",name,"better luck next time!")
                 break

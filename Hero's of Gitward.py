@@ -405,6 +405,6 @@ while SelectScreen == "1":
             beep()
             print("You're now in the",roomname,(","),name)
             print("Gold:",gold,"Health:",health)
-            if health==0:
+            if health <= 0:
                 print("Dead")
                 break
